@@ -25,6 +25,6 @@ For example, the following captures any speech in the first 20 seconds of the fi
 ```python
 r = sr.Recognizer()
     with sr.AudioFile(file_path) as source:
-        audio = r.record(source,duration=20)  # This captures the audio data
+        audio = r.record(source,duration=20)  # This captures 20 seconds of audio data
 
     result = r.recognize_google(audio)
