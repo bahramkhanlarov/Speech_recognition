@@ -9,4 +9,10 @@
 
 
 1. Clone the Repository:    git clone https://github.com/bahramkhanlarov/Speech_recognition.git
-2. 
+2. Navigate to the Project Directory: cd Speech_recognition
+3. Install Required Packages: pip install -r requirements.txt
+4. Run the Streamlit App:  streamlit run sr.py
+5. Upload Audio Files:
+Use the web interface to upload audio files in WAV or MP3 format.
+6. Download Transcription:
+After transcription, you can download the transcribed text as a .txt file.
