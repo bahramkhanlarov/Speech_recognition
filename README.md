@@ -16,3 +16,15 @@
 Use the web interface to upload audio files in WAV or MP3 format.
 6. Download Transcription:
 After transcription, you can download the transcribed text as a .txt file.
+
+## Capturing Segments With offset and duration
+What if you only want to capture a portion of the speech in a file? The record() method accepts a duration keyword argument that stops the recording after a specified number of seconds.
+
+For example, the following captures any speech in the first 20 seconds of the file:
+
+```python
+r = sr.Recognizer()
+    with sr.AudioFile(file_path) as source:
+        audio = r.record(source,duration=20)  # This captures the audio data
+
+    result = r.recognize_google(audio)
