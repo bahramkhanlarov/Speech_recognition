@@ -28,3 +28,31 @@ r = sr.Recognizer()
         audio = r.record(source,duration=20)  # This captures 20 seconds of audio data
 
     result = r.recognize_google(audio)
+
+
+The record() method, when used inside a with block, always moves ahead in the file stream. This means that if you record once for four seconds and then record again for four seconds, the second time returns the four seconds of audio after the first four seconds.
+
+
+```python
+# Process the audio file
+    r = sr.Recognizer()
+    with sr.AudioFile(file_path) as source:
+        # Record the first 4 seconds
+        audio1 = r.record(source, duration=4)
+        # Record the next 4 seconds
+        audio2 = r.record(source, duration=4)
+
+    # Transcribe the audio segments
+    result1 = r.recognize_google(audio1)
+    result2 = r.recognize_google(audio2)
+
+
+In addition to specifying a recording duration, the record() method can be given a specific starting point using the offset keyword argument. This value represents the number of seconds from the beginning of the file to ignore before starting to record.
+
+To capture only the second phrase in the file, you could start with an offset of four seconds and record for, say, three seconds.
+
+```python
+with sr.AudioFile(file_path) as source:
+        audio = r.record(source, offset=4, duration=3)
+
+r.recognize_google(audio)
